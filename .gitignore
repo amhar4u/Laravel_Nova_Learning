@@ -1,0 +1,42 @@
+# Laravel
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+
+# IDE
+/.fleet
+/.idea
+/.vscode
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Nova local package - exclude build artifacts and dependencies
+/nova/node_modules
+/nova/vendor
+/nova/public/
+/nova/mix-manifest.json
+/nova/package-lock.json
+/nova/.phpunit.result.cache
+/nova/resources/fonts/
+
+# Logs
+*.log
+
+# Build artifacts
+/public/vendor/nova
+mix-manifest.json
