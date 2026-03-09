@@ -157,17 +157,32 @@ export default {
 
     handleSubmit() {
       if (this.validateForm()) {
-        const formData = `
-Name: ${this.form.name}
-Email: ${this.form.email}
-Phone: ${this.form.phone}
-Message: ${this.form.message}
-        `.trim()
-
-        alert(formData)
-
-        // Optional: Show success message
-        Nova.success('Form submitted successfully!')
+        // Send data to API
+        Nova.request()
+          .post('/nova-vendor/test-tool/submit', this.form)
+          .then((response) => {
+            if (response.data.success) {
+              Nova.success(response.data.message || 'User created successfully!')
+              this.resetForm()
+            }
+          })
+          .catch((error) => {
+            if (error.response && error.response.status === 422) {
+              // Validation errors from backend
+              const backendErrors = error.response.data.errors
+              this.errors = {}
+              
+              Object.keys(backendErrors).forEach(key => {
+                this.errors[key] = backendErrors[key][0]
+              })
+              
+              Nova.error('Please fix the validation errors')
+            } else if (error.response && error.response.data.message) {
+              Nova.error(error.response.data.message)
+            } else {
+              Nova.error('Failed to submit form. Please try again.')
+            }
+          })
       } else {
         Nova.error('Please fix the validation errors')
       }

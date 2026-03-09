@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Zuse\TestTool\Http\Controllers\TestToolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function (Request $request) {
-//     //
-// });
+// Get all users
+Route::get('/users', [TestToolController::class, 'index']);
+
+// Store form data to database
+Route::post('/submit', [TestToolController::class, 'store']);
