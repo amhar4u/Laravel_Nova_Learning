@@ -3,6 +3,7 @@
 namespace Zuse\TestTool\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,7 @@ class TestToolController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the incoming request
+        //!! Validate all fields
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email|unique:users,email',
@@ -34,22 +35,12 @@ class TestToolController extends Controller
         }
 
         try {
-            // Create a new user with the form data
+            // !! Create a new user 
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => Hash::make('password123'), // Default password
-                // If you have a phone field in users table, add it here
-                // 'phone' => $request->phone,
+                'password' => Hash::make('password123'), 
             ]);
-
-            // You can also store additional data in a separate table if needed
-            // For example, if you have a messages or contacts table:
-            // Message::create([
-            //     'user_id' => $user->id,
-            //     'phone' => $request->phone,
-            //     'message' => $request->message,
-            // ]);
 
             return response()->json([
                 'success' => true,
@@ -61,7 +52,13 @@ class TestToolController extends Controller
                 ]
             ], 201);
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            // dd([
+            //     'success' => false,
+            //     'message' => 'Failed to create user: ' . $e->getMessage(),
+            //     'file' => $e->getFile(),
+            //     'line' => $e->getLine(),
+            // ]);
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to create user: ' . $e->getMessage()
