@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "pktharindu/nova-permissions": "^3.0",
-        "zuse/test-tool": "@dev"
+        "zuse/test-tool": "@dev",
+        "acme/post": "@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -81,6 +82,10 @@
         {
             "type": "path",
             "url": "./nova-components/TestTool"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Post"
         }
     ]
 }

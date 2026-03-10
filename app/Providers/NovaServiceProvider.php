@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Nova\Dashboards\Main;
+use App\Nova\Post;
 use App\Nova\Role;
 use App\Nova\User;
 use Bolechen\NovaActivitylog\Resources\Activitylog;
@@ -110,12 +111,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         </svg>'),
                 ])->icon('chart-bar')->collapsable(),
 
-                MenuSection::make('Settings', [
+                MenuSection::make('Content Management', [
+                    MenuItem::resource(Post::class)
+                        ->icon('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>'),
                     MenuItem::externalLink('Test Tool', '/nova/test-tool')
                         ->icon('<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543-.94-3.31.826-2.37 2.37a1.724 1.724 0 00-1.065-2.572c-.94-1.543-.826-3.31zM15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l5.653-4.655m5.8-2.672l1.766-1.766a4.125 4.125 0 00-5.838-5.838L7.8 5.966m5.8 2.672l-5.8-2.672" />
                         </svg>'),
-                ])->icon('cog')->collapsable(),
+                ])->icon('collection')->collapsable(),
 
                 MenuSection::make('User Management', [
                     MenuItem::resource(User::class)
