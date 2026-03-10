@@ -14,22 +14,22 @@ class Post extends Model
      * These match exactly the Nova field types shown in the Post tool.
      */
     protected $fillable = [
-        'title',            // Text field
-        'slug',             // Slug field
-        'author',           // Text field
-        'meta_title',       // Text field
-        'content',          // Trix / Markdown field
-        'excerpt',          // Textarea field
-        'meta_description', // Textarea field
-        'status',           // Select / Badge field
-        'category',         // Select field
-        'is_featured',      // Boolean field
-        'views',            // Number field
-        'rating',           // Number field (decimal)
-        'reading_time',     // Number field
-        'published_at',     // DateTime field
-        'featured_image',   // Image / File field
-        'tags',             // Tags / KeyValue field
+        'title',            
+        'slug',             
+        'author',           
+        'meta_title',       
+        'content',         
+        'excerpt',          
+        'meta_description', 
+        'status',           
+        'category',         
+        'is_featured',      
+        'views',             
+        'rating',           
+        'reading_time',     
+        'published_at',     
+        'featured_image',   
+        'tags',             
     ];
 
     /**
